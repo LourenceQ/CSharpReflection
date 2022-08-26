@@ -1,0 +1,59 @@
+﻿namespace UsingReflection;
+
+public interface ITalk
+{
+    void Talk(string sentence);
+}
+
+public class EmployeeMarkerAttribute : Attribute
+{
+
+}
+
+[EmployeeMarker]
+public class Employee: Person
+{
+    public string Company { get; set; }
+}
+
+public class Alien : ITalk
+{
+    public void Talk(string sentence)
+    {
+        Console.WriteLine($"Alien talking ...: {sentence}");
+    }
+}
+
+public class Person : ITalk
+{
+    public string Name { get; set; }
+    public int age;
+    private string _aPrivateField = "initial private field value";
+
+    public Person()
+    {
+        Console.WriteLine("A person is being created.");
+    }
+
+    public Person(string name)
+    {
+        Console.WriteLine($"A person with name {name} is being created.");
+        Name = name;
+    }
+
+    public void Talk(string sentence)
+    {
+        Console.WriteLine($"Talking ..: {sentence}");
+    }
+
+    protected void Yell(string sentence)
+    {
+        Console.WriteLine($"YELLING! {sentence}");
+    }
+
+    public override string ToString()
+    {
+        return $"{Name} {age} {_aPrivateField}";
+    }
+}
+
