@@ -41,6 +41,14 @@ public class Person : ITalk
         Name = name;
     }
 
+    private Person(string name, int age)
+    {
+        Console.WriteLine($"A person with name {name} and age {age} " +
+            $"is being created using a private constructor.");
+        Name = name;
+        this.age = age;
+    }
+
     public void Talk(string sentence)
     {
         Console.WriteLine($"Talking ..: {sentence}");
